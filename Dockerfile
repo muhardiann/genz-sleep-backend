@@ -1,18 +1,20 @@
-# Gunakan base image resmi Python
+# Gunakan base image resmi Python yang ringan
 FROM python:3.9-slim
 
-# Set direktori kerja di dalam kontainer
+# Tetapkan direktori kerja di dalam kontainer
 WORKDIR /code
 
-# Salin file requirements terlebih dahulu untuk caching
+# Salin file requirements.txt terlebih dahulu.
+# Langkah ini dioptimalkan untuk Docker caching.
 COPY ./requirements.txt /code/requirements.txt
 
-# Install dependensi
+# Install semua library dari daftar belanjaan kita
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 # Salin semua sisa kode proyek ke dalam direktori kerja
 COPY . /code/
 
-# Jalankan aplikasi menggunakan gunicorn saat kontainer dimulai
-# Hugging Face Spaces menyediakan port melalui variabel $PORT
+# Perintah untuk menjalankan aplikasi saat kontainer dimulai
+# Menggunakan Gunicorn sebagai server produksi yang memanggil Uvicorn
+# Port 7860 adalah default yang umum untuk platform seperti Hugging Face Spaces
 CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:7860"]

@@ -1,7 +1,8 @@
 fastapi
 uvicorn
-scikit-learn
-pandas
-tensorflow-cpu
-fastapi-cors
+gunicorn
 pydantic
+pandas
+scikit-learn
+tensorflow-cpu
+numpy
