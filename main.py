@@ -95,7 +95,7 @@ def predict_sleep_quality(data: PredictionInput):
     }
     input_df = pd.DataFrame([input_data])[feature_names_from_scaler]
     try:
-        data_processed = (input_df.values - np.array(scaler_params['mean'])) / np.array(scaler_params['scale'])
+        data_processed = (input_df.values - scaler_mean) / scaler_scale
         prediksi_proba = model_h5.predict(data_processed, verbose=0)
         skor_keyakinan_buruk = prediksi_proba[0][0]
     except Exception as e:
