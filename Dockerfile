@@ -1,5 +1,5 @@
 # Gunakan base image resmi Python yang ringan
-FROM python:3.9-slim
+FROM python:3.11-slim
 
 # Tetapkan direktori kerja di dalam kontainer
 WORKDIR /code
