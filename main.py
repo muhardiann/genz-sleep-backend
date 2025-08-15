@@ -8,7 +8,7 @@ import warnings
 warnings.filterwarnings('ignore', category=UserWarning, module='tensorflow')
 
 from fastapi import FastAPI, Response # <-- Pastikan Response diimpor
-from pantic import BaseModel, Field
+from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
 import joblib
