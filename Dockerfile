@@ -16,5 +16,4 @@ COPY . /code/
 
 # Perintah untuk menjalankan aplikasi saat kontainer dimulai
 # Menggunakan Gunicorn sebagai server produksi yang memanggil Uvicorn
-# Port 7860 adalah default yang umum untuk platform seperti Hugging Face Spaces
 CMD ["gunicorn", "-w", "2", "-k", "uvicorn.workers.UvicornWorker", "main:app", "--bind", "0.0.0.0:8080"]
