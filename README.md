@@ -4,8 +4,13 @@ emoji: 🚀
 colorFrom: red
 colorTo: purple
 sdk: docker
-pinned: false
 license: mit
+app_port: 8080
+health_check:
+  path: /api/health
 ---
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+# API Prediksi Kualitas Tidur Gen Z
+
+Ini adalah backend FastAPI untuk aplikasi prediksi kualitas tidur.
+Dokumentasi interaktif API tersedia di endpoint `/docs`.
