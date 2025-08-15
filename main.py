@@ -28,7 +28,13 @@ class PredictionInput(BaseModel):
 
 # --- Inisialisasi Aplikasi ---
 app = FastAPI(title="API Prediksi Kualitas Tidur", version="10.0.0")
-app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=True, allow_methods=["*"], allow_headers=["*"])
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Mengizinkan semua origin (untuk development)
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "OPTIONS"],  # Pastikan OPTIONS diizinkan secara eksplisit
+    allow_headers=["*"],  # Mengizinkan semua header
+)
 
 # --- Endpoint ---
 @app.get("/", tags=["Root"])
