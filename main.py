@@ -38,6 +38,11 @@ except Exception as e:
 def read_root():
     return {"message": "Welcome! API is running. Visit /docs for documentation."}
 
+@app.post("/", tags=["Root Test"])
+def post_root_test(data: dict):
+    """Endpoint ini hanya untuk mengetes apakah request POST sampai ke root."""
+    return {"status": "POST request to root received successfully!", "data_received": data}
+
 # Endpoint Prediksi sekarang menggunakan @router, bukan @app
 # Path-nya sekarang hanya "/predict" karena "/api" sudah di-handle oleh prefix router
 @router.post("/predict", tags=["Prediction"])
